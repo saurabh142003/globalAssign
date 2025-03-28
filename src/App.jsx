@@ -4,14 +4,15 @@ import Login from './components/Login';
 import UsersList from './components/UsersList';
 import EditUser from './components/EditUser';
 import { Toaster } from 'react-hot-toast';
+
 function App() {
   const PrivateRoute = ({ children }) => {
     const token = localStorage.getItem('userToken');
-    return token ? children : <Navigate to="/" />;
+    return token ? children : <Navigate to="/" replace />;
   };
 
   return (
-    <Router>
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route 
@@ -30,6 +31,8 @@ function App() {
             </PrivateRoute>
           } 
         />
+        {/* Add a catch-all route to handle undefined routes */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toaster 
         position="top-right"
