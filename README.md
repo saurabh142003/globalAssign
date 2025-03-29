@@ -50,7 +50,7 @@ cd employwise-frontend
 npm install
 
 # Start the development server
-npm start
+npm run dev
 ```
 
 Open `http://localhost:5173` in your browser.
